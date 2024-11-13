@@ -1,7 +1,9 @@
 package calculator
 
+import io.kotest.assertions.throwables.shouldThrow
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.matchers.shouldBe
+import io.kotest.matchers.string.shouldContain
 
 class StringCalculatorTest : StringSpec({
     val stringCalculator = StringCalculator()
@@ -25,24 +27,29 @@ class StringCalculatorTest : StringSpec({
         val input = "6 / 2"
         stringCalculator.calculate(input) shouldBe 3
     }
-})
 
-class StringCalculator() {
-    fun calculate(input: String): Int {
-        val strings = input.split(" ")
-        val a = strings[0].toInt()
-        val b = strings[2].toInt()
-        val operator = strings[1]
-        if (operator == "+") {
-            return a + b
-        } else if (operator == "-") {
-            return a - b
-        } else if (operator == "*") {
-            return a * b
-        } else if (operator == "/") {
-            return a / b
-        } else {
-            return 0
+    "사칙연산" {
+        val input = "2 + 3 * 4 / 2"
+        stringCalculator.calculate(input) shouldBe 10
+    }
+
+    "입력이 null 또는 빈 문자열이 올 경우 예외 발생" {
+        listOf(null, "", "   ").forEach { input ->
+            shouldThrow<IllegalArgumentException> {
+                stringCalculator.calculate(input)
+            }.message shouldBe "Input cannot be null or blank"
         }
     }
-}
+
+    "잘못된 연산자가 포함된 경우 예외 발생" {
+        shouldThrow<IllegalArgumentException> {
+            stringCalculator.calculate("2 + 3 & 4")
+        }.message shouldContain "Invalid operator"
+    }
+
+    "0으로 나눌 경우 예외 발생" {
+        shouldThrow<IllegalArgumentException> {
+            stringCalculator.calculate("4 / 0")
+        }.message shouldBe "Cannot divide by zero"
+    }
+})
