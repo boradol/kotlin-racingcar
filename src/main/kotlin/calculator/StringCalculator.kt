@@ -9,7 +9,7 @@ class StringCalculator {
 
         var index = 1
         while (index < tokens.size) {
-            val operator = Operator.from(tokens[index])
+            val operator = OperatorFactory.from(tokens[index])
             val nextValue =
                 tokens.getOrNull(index + 1)
                     ?.toIntOrNull()
