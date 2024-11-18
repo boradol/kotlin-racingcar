@@ -15,7 +15,7 @@ class CarRacingGameTest : StringSpec({
 
         raceResult.size shouldBe 5
         raceResult.forEach { round ->
-            round.size shouldBe 3
+            round.getPositions().size shouldBe 3
         }
     }
 
@@ -25,9 +25,9 @@ class CarRacingGameTest : StringSpec({
         val raceResult = game.play(RandomMoveStrategy())
 
         raceResult.forEachIndexed { _, round ->
-            round.forEach { car ->
-                car.position.point shouldBeGreaterThanOrEqual 0
-                car.position.point shouldBeLessThanOrEqual 5
+            round.getPositions().forEach { position ->
+                position shouldBeGreaterThanOrEqual 0
+                position shouldBeLessThanOrEqual 5
             }
         }
     }

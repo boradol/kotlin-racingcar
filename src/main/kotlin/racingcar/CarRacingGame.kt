@@ -1,20 +1,20 @@
 package racingcar
 
 import racingcar.domain.Car
+import racingcar.domain.Cars
 import racingcar.strategy.MoveStrategy
 
 class CarRacingGame(
     carCount: Int,
     private val rounds: Int,
 ) {
-    private val cars: List<Car> = List(carCount) { Car() }
+    private val cars: Cars = Cars(List(carCount) { Car() })
 
-    fun play(moveStrategy: MoveStrategy): List<List<Car>> {
-        val results = mutableListOf<List<Car>>()
-
+    fun play(moveStrategy: MoveStrategy): List<Cars> {
+        val results = mutableListOf<Cars>()
         var currentCars = cars
         repeat(rounds) {
-            currentCars = currentCars.map { it.move(moveStrategy) }
+            currentCars = currentCars.move(moveStrategy)
             results.add(currentCars)
         }
 
