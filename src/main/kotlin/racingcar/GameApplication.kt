@@ -1,5 +1,6 @@
 package racingcar
 
+import racingcar.domain.Car
 import racingcar.strategy.RandomMoveStrategy
 import racingcar.ui.readNumberOfCars
 import racingcar.ui.readTries
