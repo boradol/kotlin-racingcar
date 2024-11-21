@@ -1,6 +1,6 @@
 package calculator.operator
 
-enum class OperatorType(val symbol: String, private val operator: Operator) : Operator {
+enum class OperatorType(val symbol: String, private val operator: Operator) : Operator by operator {
     PLUS(
         "+",
         Operator { leftOperand, rightOperand -> leftOperand + rightOperand },
@@ -20,10 +20,4 @@ enum class OperatorType(val symbol: String, private val operator: Operator) : Op
             leftOperand / rightOperand
         },
     ),
-    ;
-
-    override fun apply(
-        leftOperand: Int,
-        rightOperand: Int,
-    ): Int = operator.apply(leftOperand, rightOperand)
 }
