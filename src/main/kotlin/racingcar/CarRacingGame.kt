@@ -16,6 +16,10 @@ class CarRacingGame private constructor(
             .toList()
     }
 
+    fun findWinners(results: List<Cars>): List<Car> {
+        return results.last().maxPositionCars()
+    }
+
     companion object {
         fun create(
             carNames: String,

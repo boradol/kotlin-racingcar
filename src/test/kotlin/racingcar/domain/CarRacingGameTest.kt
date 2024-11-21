@@ -1,23 +1,26 @@
 package racingcar.domain
 
-import io.kotest.core.spec.style.Test
 import io.kotest.matchers.ints.shouldBeGreaterThanOrEqual
 import io.kotest.matchers.ints.shouldBeLessThanOrEqual
 import io.kotest.matchers.shouldBe
+import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.assertThrows
+import org.junit.jupiter.params.ParameterizedTest
+import org.junit.jupiter.params.provider.ValueSource
 import racingcar.CarRacingGame
 import racingcar.strategy.RandomMoveStrategy
 
 class CarRacingGameTest {
     @Test
-    fun `자동차들이 n번의 라운드 동안 이동한다`() {
-        val carNames = "pobi,crong,honux"
+    fun `자동차 이름을 받아서 게임을 생성한다`() {
+        val carNames = "pobi, crong, honux"
         val game = CarRacingGame.create(carNames = carNames, rounds = 5)
 
         val raceResult = game.play(RandomMoveStrategy())
 
         raceResult.size shouldBe 5
         raceResult.forEach { round ->
-            round.getPositions().size shouldBe 3
+            round.currentCars().size shouldBe 3
         }
     }
 
@@ -29,10 +32,35 @@ class CarRacingGameTest {
         val raceResult = game.play(RandomMoveStrategy())
 
         raceResult.forEach { round ->
-            round.getPositions().forEach { position ->
-                position shouldBeGreaterThanOrEqual 0
-                position shouldBeLessThanOrEqual 5
+            round.currentCars().forEach { car ->
+                car.position.value shouldBeGreaterThanOrEqual 0
+                car.position.value shouldBeLessThanOrEqual 5
             }
         }
+    }
+
+    @ParameterizedTest
+    @ValueSource(ints = [0, -1, -10])
+    fun `라운드 수는 1 이상이어야 한다`(rounds: Int) {
+        val carNames = "pobi,crong,honux"
+
+        assertThrows<IllegalArgumentException> {
+            CarRacingGame.create(carNames, rounds)
+        }
+    }
+
+    @Test
+    fun `우승자는 가장 많이 전진한 자동차이다`() {
+        val carNames = "pobi,crong,honux"
+        val rounds = 5
+        val game = CarRacingGame.create(carNames, rounds)
+        val results = game.play { true }
+
+        val winners = game.findWinners(results)
+
+        winners.size shouldBe 3
+        winners.find { it.name.value == "pobi" } shouldBe Car(CarName("pobi"), CarPosition(5))
+        winners.find { it.name.value == "crong" } shouldBe Car(CarName("crong"), CarPosition(5))
+        winners.find { it.name.value == "honux" } shouldBe Car(CarName("honux"), CarPosition(5))
     }
 }
