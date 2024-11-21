@@ -1,7 +1,7 @@
 package racingcar.domain
 
-import io.kotest.core.spec.style.Test
 import io.kotest.matchers.shouldBe
+import org.junit.jupiter.api.Test
 
 class CarTest {
     @Test
@@ -10,7 +10,7 @@ class CarTest {
 
         val car = Car.from(carName).move { true }
 
-        car.position shouldBe CarPosition(1)
+        car shouldBe Car(CarName("bobi"), CarPosition(1))
     }
 
     @Test
@@ -19,6 +19,6 @@ class CarTest {
 
         val car = Car.from(carName).move { false }
 
-        car.position shouldBe CarPosition(0)
+        car shouldBe Car(CarName("bobi"), CarPosition(0))
     }
 }
