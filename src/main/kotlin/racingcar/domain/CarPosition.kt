@@ -1,9 +1,9 @@
 package racingcar.domain
 
-data class CarPosition(private val position: Int = 0) {
-    fun move(): CarPosition {
-        return CarPosition(position + 1)
-    }
+private const val DEFAULT_POSITION = 0
 
-    val point: Int get() = position
+data class CarPosition(val value: Int = DEFAULT_POSITION) {
+    fun move(): CarPosition {
+        return copy(value = value + 1)
+    }
 }

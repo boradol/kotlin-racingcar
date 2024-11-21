@@ -8,6 +8,6 @@ data class Cars(private val cars: List<Car>) {
     }
 
     fun getPositions(): List<Int> {
-        return cars.map { it.position.point }
+        return cars.map { it.position.value }
     }
 }
