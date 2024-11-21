@@ -24,7 +24,7 @@ class CarRacingGameTest : StringSpec({
 
         val raceResult = game.play(RandomMoveStrategy())
 
-        raceResult.forEachIndexed { _, round ->
+        raceResult.forEach { round ->
             round.getPositions().forEach { position ->
                 position shouldBeGreaterThanOrEqual 0
                 position shouldBeLessThanOrEqual 5
