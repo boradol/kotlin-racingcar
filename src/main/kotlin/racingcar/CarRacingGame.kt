@@ -34,7 +34,7 @@ class CarRacingGame private constructor(
             val names = carNames.split(",").map { it.trim() }
             require(names.all { it.length <= 5 }) { "자동차 이름은 5자를 초과할 수 없습니다." }
 
-            return Cars(names.map { Car(CarPosition()) })
+            return Cars(names.map { Car(it, CarPosition()) })
         }
 
         private fun validateRounds(rounds: Int) {
