@@ -8,7 +8,7 @@ class CarTest {
     fun `전진 조건을 만족하면 차는 전진한다`() {
         val carName = "bobi"
 
-        val car = Car(carName).move { true }
+        val car = Car.from(carName).move { true }
 
         car.position shouldBe CarPosition(1)
     }
@@ -17,7 +17,7 @@ class CarTest {
     fun `전진 조건을 만족하지 않으면 차는 전진하지 않는다`() {
         val carName = "bobi"
 
-        val car = Car(carName).move { false }
+        val car = Car.from(carName).move { false }
 
         car.position shouldBe CarPosition(0)
     }

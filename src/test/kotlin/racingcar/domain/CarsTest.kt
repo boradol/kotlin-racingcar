@@ -6,7 +6,7 @@ import io.kotest.matchers.shouldBe
 class CarsTest {
     @Test
     fun `차들이 전진한다`() {
-        val cars = Cars(listOf(Car("bobi"), Car("cobi"), Car("dobi")))
+        val cars = Cars(listOf(Car.from("bobi"), Car.from("cobi"), Car.from("dobi")))
 
         val movedCars = cars.move { true }
 
@@ -15,7 +15,7 @@ class CarsTest {
 
     @Test
     fun `차들이 전진하지 않는다`() {
-        val cars = Cars(listOf(Car("bobi"), Car("cobi"), Car("dobi")))
+        val cars = Cars(listOf(Car.from("bobi"), Car.from("cobi"), Car.from("dobi")))
 
         val movedCars = cars.move { false }
 

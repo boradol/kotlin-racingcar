@@ -1,7 +1,6 @@
 package racingcar
 
 import racingcar.domain.Car
-import racingcar.domain.CarPosition
 import racingcar.domain.Cars
 import racingcar.strategy.MoveStrategy
 
@@ -32,9 +31,8 @@ class CarRacingGame private constructor(
 
         private fun parseCarNames(carNames: String): Cars {
             val names = carNames.split(",").map { it.trim() }
-            require(names.all { it.length <= 5 }) { "자동차 이름은 5자를 초과할 수 없습니다." }
 
-            return Cars(names.map { Car(it, CarPosition()) })
+            return Cars(names.map { Car.from(it) })
         }
 
         private fun validateRounds(rounds: Int) {
