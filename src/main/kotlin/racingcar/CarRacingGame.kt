@@ -9,16 +9,14 @@ class CarRacingGame private constructor(
     private val rounds: Int,
 ) {
     fun play(moveStrategy: MoveStrategy): List<Cars> {
-        val totalRounds = rounds + INITIAL_ROUND_COUNT
+        val initCars = cars.move(moveStrategy)
 
-        return generateSequence(cars) { it.move(moveStrategy) }
-            .take(totalRounds)
+        return generateSequence(initCars) { it.move(moveStrategy) }
+            .take(rounds)
             .toList()
     }
 
     companion object {
-        private const val INITIAL_ROUND_COUNT = 1
-
         fun create(
             carNames: String,
             rounds: Int,
