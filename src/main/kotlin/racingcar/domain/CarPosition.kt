@@ -1,7 +1,5 @@
 package racingcar.domain
 
-private const val DEFAULT_POSITION = 0
-
 data class CarPosition(val value: Int = DEFAULT_POSITION) {
     init {
         require(value >= DEFAULT_POSITION) { "위치는 음수일 수 없습니다." }
@@ -9,5 +7,9 @@ data class CarPosition(val value: Int = DEFAULT_POSITION) {
 
     fun move(): CarPosition {
         return copy(value = value + 1)
+    }
+
+    companion object {
+        private const val DEFAULT_POSITION = 0
     }
 }
