@@ -1,8 +1,6 @@
 package calculator.operator
 
-interface Operator {
-    val symbol: String
-
+fun interface Operator {
     fun apply(
         leftOperand: Int,
         rightOperand: Int,

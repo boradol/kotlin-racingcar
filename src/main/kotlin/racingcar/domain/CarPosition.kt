@@ -1,9 +1,16 @@
 package racingcar.domain
 
-data class CarPosition(private val position: Int = 0) {
-    fun move(): CarPosition {
-        return CarPosition(position + 1)
+@JvmInline
+value class CarPosition(val value: Int = DEFAULT_POSITION) {
+    init {
+        require(value >= DEFAULT_POSITION) { "위치는 음수일 수 없습니다." }
     }
 
-    val point: Int get() = position
+    fun move(): CarPosition {
+        return CarPosition(value + 1)
+    }
+
+    companion object {
+        private const val DEFAULT_POSITION = 0
+    }
 }

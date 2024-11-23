@@ -2,6 +2,8 @@ package calculator
 
 import calculator.operator.Operator
 
+private const val OPERATION_INTERVAL = 2
+
 class InputValue(val operands: List<Int>, val operators: List<Operator>) {
     val firstOperand: Int = operands[0]
 
@@ -19,11 +21,11 @@ class InputValue(val operands: List<Int>, val operators: List<Operator>) {
         }
 
         private fun getOperands(tokens: List<String>): List<Int> =
-            tokens.filterIndexed { index, _ -> index % 2 == 0 }
+            tokens.filterIndexed { index, _ -> index % OPERATION_INTERVAL == 0 }
                 .map { it.toIntOrNull() ?: throw IllegalArgumentException("Invalid number: $it") }
 
         private fun getOperators(tokens: List<String>): List<Operator> =
-            tokens.filterIndexed { index, _ -> index % 2 != 0 }
+            tokens.filterIndexed { index, _ -> index % OPERATION_INTERVAL != 0 }
                 .map { OperatorFactory.from(it) }
     }
 }
