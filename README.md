@@ -19,7 +19,7 @@
 > - [x] 전진하는 자동차를 출력할 때 자동차 이름 같이 출력 하기
 > - 수정 사항
 >   - [x] 상수는 companion object로 이동
->   - [ ] 불필요한 팩토리 메서드 삭제
+>   - [x] 불필요한 팩토리 메서드 삭제
 >   - [x] Value Object 적용
 >     - 유효성 검증 => init block 사용 가능  
 >     - 객체 생성 비용 제거 => 런타임에서 실제로는 객체를 생성하지 않고 기본 타입(String, Int)으로 동작
@@ -29,8 +29,8 @@
 >   - [x] InputView, ResultView 유틸성 클래스
 >     - object class 사용
 >   - [x] shouldBeGreaterThanOrEqual, shouldBeLessThanOrEqual 포함 테스트 수정
->   - [ ] CarRacingGame 책임 분리
->     - [ ] 우승자 찾기 로직 추가
+>   - [x] CarRacingGame 책임 분리
+>     - [x] 우승자 찾기 로직 추가
 
 ### 기능 요구 사항
 초간단 자동차 경주 게임을 구현한다.

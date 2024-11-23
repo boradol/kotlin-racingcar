@@ -7,7 +7,7 @@ data class Cars(private val cars: List<Car>) {
         return Cars(cars.map { it.move(moveStrategy) })
     }
 
-    fun maxPositionCars(): List<Car> = cars.filter { it.position.value == maxPosition() }
+    fun maxPositionCars(): Cars = Cars(cars.filter { it.position.value == maxPosition() })
 
     fun currentCars(): List<Car> = cars.map { it }
 

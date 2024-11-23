@@ -55,19 +55,4 @@ class CarRacingGameTest {
             CarRacingGame.create(carNames, rounds)
         }
     }
-
-    @Test
-    fun `우승자는 가장 많이 전진한 자동차이다`() {
-        val carNames = "pobi,crong,honux"
-        val rounds = 5
-        val game = CarRacingGame.create(carNames, rounds)
-        val results = game.play { true }
-
-        val winners = game.findWinners(results)
-
-        winners.size shouldBe 3
-        winners.find { it.name.value == "pobi" } shouldBe Car(CarName("pobi"), CarPosition(5))
-        winners.find { it.name.value == "crong" } shouldBe Car(CarName("crong"), CarPosition(5))
-        winners.find { it.name.value == "honux" } shouldBe Car(CarName("honux"), CarPosition(5))
-    }
 }

@@ -1,13 +1,12 @@
 package racingcar.ui
 
-import racingcar.domain.Car
 import racingcar.domain.Cars
 
 object ResultView {
     private const val DASH_SYMBOL = "-"
 
-    fun printWinners(winners: List<Car>) {
-        println("${winners.joinToString(", ") { it.name.value }}가 최종 우승했습니다.")
+    fun printWinners(winners: Cars) {
+        println("${winners.currentCars().joinToString(", ") { it.name.value }}가 최종 우승했습니다.")
     }
 
     fun printAllResults(raceResult: List<Cars>) {
