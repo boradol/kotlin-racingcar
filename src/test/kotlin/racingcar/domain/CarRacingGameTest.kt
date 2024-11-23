@@ -1,7 +1,5 @@
 package racingcar.domain
 
-import io.kotest.matchers.ints.shouldBeGreaterThanOrEqual
-import io.kotest.matchers.ints.shouldBeLessThanOrEqual
 import io.kotest.matchers.shouldBe
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
@@ -25,17 +23,26 @@ class CarRacingGameTest {
     }
 
     @Test
-    fun `자동차의 위치가 라운드 수를 초과하지 않는다`() {
+    fun `자동차가 모든 라운드에서 전진하면 자동차의 위치는 라우드 수와 일치한다`() {
         val carNames = "pobi,crong,honux"
         val game = CarRacingGame.create(carNames = carNames, rounds = 5)
 
-        val raceResult = game.play(RandomMoveStrategy())
+        val raceResult = game.play { true }
 
-        raceResult.forEach { round ->
-            round.currentCars().forEach { car ->
-                car.position.value shouldBeGreaterThanOrEqual 0
-                car.position.value shouldBeLessThanOrEqual 5
-            }
+        raceResult.last().currentCars().forEach { car ->
+            car.position.value shouldBe 5
+        }
+    }
+
+    @Test
+    fun `자동차가 모든 라운드에서 정지하면 자동차의 위치는 0이다`() {
+        val carNames = "pobi,crong,honux"
+        val game = CarRacingGame.create(carNames = carNames, rounds = 5)
+
+        val raceResult = game.play { false }
+
+        raceResult.last().currentCars().forEach { car ->
+            car.position.value shouldBe 0
         }
     }
 

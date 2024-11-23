@@ -28,7 +28,7 @@
 >     - 불변성 유지 => 일반적으로 데이터 클래스처럼 불변 객체로 동작합니다.
 >   - [x] InputView, ResultView 유틸성 클래스
 >     - object class 사용
->   - [ ] shouldBeGreaterThanOrEqual, shouldBeLessThanOrEqual 포함 테스트 수정
+>   - [x] shouldBeGreaterThanOrEqual, shouldBeLessThanOrEqual 포함 테스트 수정
 >   - [ ] CarRacingGame 책임 분리
 >     - [ ] 우승자 찾기 로직 추가
 
