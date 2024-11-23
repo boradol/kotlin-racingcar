@@ -20,7 +20,12 @@
 > - 수정 사항
 >   - [x] 상수는 companion object로 이동
 >   - [ ] 불필요한 팩토리 메서드 삭제
->   - [ ] Value Object 적용
+>   - [x] Value Object 적용
+>     - 유효성 검증 => init block 사용 가능  
+>     - 객체 생성 비용 제거 => 런타임에서 실제로는 객체를 생성하지 않고 기본 타입(String, Int)으로 동작
+>     - 타입 안정성 => 하지만 value class를 사용해 의미 있는 타입을 정의 가능 (단, 단일 프로퍼티만 허용)
+>     - 런타임 성능 최적화 => 런타임에서 객체를 생성하지 않고, 단일 프로퍼티의 값만 사용하므로 메모리와 성능 면에서 효율적
+>     - 불변성 유지 => 일반적으로 데이터 클래스처럼 불변 객체로 동작합니다.
 >   - [ ] InputView, ResultView 유틸성 클래스
 >   - [ ] shouldBeGreaterThanOrEqual, shouldBeLessThanOrEqual 포함 테스트 수정
 >   - [ ] CarRacingGame 책임 분리
