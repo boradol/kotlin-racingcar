@@ -1,19 +1,17 @@
 package racingcar
 
 import racingcar.strategy.RandomMoveStrategy
-import racingcar.ui.printAllResults
-import racingcar.ui.printWinners
-import racingcar.ui.readCarNames
-import racingcar.ui.readTries
+import racingcar.ui.InputView
+import racingcar.ui.ResultView
 
 fun main() {
-    val carNames = readCarNames()
-    val round = readTries()
+    val carNames = InputView.readCarNames()
+    val round = InputView.readTries()
 
     val game = CarRacingGame.create(carNames, round)
     val raceResults = game.play(RandomMoveStrategy())
     val winners = game.findWinners(raceResults)
 
-    printAllResults(raceResults)
-    printWinners(winners)
+    ResultView.printAllResults(raceResults)
+    ResultView.printWinners(winners)
 }
