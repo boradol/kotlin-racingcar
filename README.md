@@ -17,6 +17,13 @@
 > - [x] 자동차 경주 게임을 완료한 후 우승자 알려주기
 >   - [x] 우승자는 한 명 이상일 경우 체크
 > - [x] 전진하는 자동차를 출력할 때 자동차 이름 같이 출력 하기
+> - [ ] 상수는 companion object로 이동
+> - [ ] 불필요한 팩토리 메서드 삭제
+> - [ ] Value Object 적용
+> - [ ] InputView, ResultView 유틸성 클래스
+> - [ ] shouldBeGreaterThanOrEqual, shouldBeLessThanOrEqual 포함 테스트 수정
+> - [ ] CarRacingGame 책임 분리
+>   - [ ] 우승자 찾기 로직 추가
 
 ### 기능 요구 사항
 초간단 자동차 경주 게임을 구현한다.
