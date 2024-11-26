@@ -32,10 +32,9 @@ class CarsTest {
         val car3 = Car(CarName("dobi"), CarPosition(5))
         val cars = Cars(listOf(car1, car2, car3))
 
-        val winners = cars.maxPositionCars()
+        val maxPosition = cars.maxPosition()
 
-        winners.currentCars().size shouldBe 2
-        winners.currentCars().map { it.name.value } shouldContainExactly listOf("bobi", "dobi")
+        maxPosition shouldBe 5
     }
 
     @Test

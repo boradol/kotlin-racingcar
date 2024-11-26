@@ -11,9 +11,9 @@
 
 ### 이전 피드백 반영
 - [x] 부생성자 사용
-- [ ] 리팩토링
-  - [ ] Winners results 파라미터명 수정
-  - [ ] Winners가 우승자를 추출하도록 수정
+- [x] 리팩토링
+  - [x] Winners results 파라미터명 수정
+  - [x] Winners가 우승자를 추출하도록 수정
 
 ---
 

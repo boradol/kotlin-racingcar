@@ -9,7 +9,7 @@ import org.junit.jupiter.params.provider.ValueSource
 
 class CarNameTest {
     @Test
-    fun `유효한 이름으로 CarName 이 생성된다`() {
+    fun `CarName 이 생성된다`() {
         val carName = CarName("bobi")
 
         carName shouldBe CarName("bobi")
