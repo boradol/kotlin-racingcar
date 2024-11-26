@@ -12,7 +12,7 @@ class CarRacingGameTest {
     @Test
     fun `자동차 이름을 받아서 게임을 생성한다`() {
         val carNames = "pobi, crong, honux"
-        val game = CarRacingGame.create(carNames = carNames, rounds = 5)
+        val game = CarRacingGame(carNames = carNames, rounds = 5)
 
         val raceResult = game.play(RandomMoveStrategy())
 
@@ -25,7 +25,7 @@ class CarRacingGameTest {
     @Test
     fun `자동차가 모든 라운드에서 전진하면 자동차의 위치는 라우드 수와 일치한다`() {
         val carNames = "pobi,crong,honux"
-        val game = CarRacingGame.create(carNames = carNames, rounds = 5)
+        val game = CarRacingGame(carNames = carNames, rounds = 5)
 
         val raceResult = game.play { true }
 
@@ -37,7 +37,7 @@ class CarRacingGameTest {
     @Test
     fun `자동차가 모든 라운드에서 정지하면 자동차의 위치는 0이다`() {
         val carNames = "pobi,crong,honux"
-        val game = CarRacingGame.create(carNames = carNames, rounds = 5)
+        val game = CarRacingGame(carNames = carNames, rounds = 5)
 
         val raceResult = game.play { false }
 
@@ -52,7 +52,7 @@ class CarRacingGameTest {
         val carNames = "pobi,crong,honux"
 
         assertThrows<IllegalArgumentException> {
-            CarRacingGame.create(carNames, rounds)
+            CarRacingGame(carNames, rounds)
         }
     }
 }
