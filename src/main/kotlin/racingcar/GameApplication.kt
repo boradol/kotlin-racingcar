@@ -9,7 +9,7 @@ fun main() {
     val carNames = InputView.readCarNames()
     val round = InputView.readTries()
 
-    val game = CarRacingGame.create(carNames, round)
+    val game = CarRacingGame(carNames, round)
     val raceResults = game.play(RandomMoveStrategy())
     val winners = Winners.from(raceResults).values
 
